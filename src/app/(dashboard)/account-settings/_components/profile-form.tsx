@@ -22,6 +22,7 @@ import { useEffect } from "react";
 import { DeleteConfirmation } from "./delete-confirmation";
 import useUpdateProfile from "../_hooks/use-update-profile";
 import { UpdateProfileFields } from "@/lib/types/auth.types";
+import { useRouter } from "next/navigation";
 
 const defaultFormValues: UpdateProfileFields = {
   firstName: "",
@@ -33,6 +34,7 @@ const defaultFormValues: UpdateProfileFields = {
 
 export default function ProfileForm() {
   const { data: session, status, update } = useSession();
+  const router = useRouter();
 
   const { setErrorMessage, displayedErrorMessage } = useSubmissionError();
   const { updateProfile, isPending } = useUpdateProfile();
@@ -94,6 +96,8 @@ export default function ProfileForm() {
             phone: values.phone,
           },
         });
+        //عشان السايد بار كمان تشوف الابديت ال حصل لانها سيرفر كومبوننت
+        router.refresh();
       },
     });
   };
