@@ -1,7 +1,7 @@
 "use client";
 import { useSubmissionError } from "@/hooks/use-submission-error";
 import { submitAnswersService } from "@/lib/services/questions.service";
-import { SubmittedAnswersType } from "@/lib/types/questions";
+import { SubmittedAnswers } from "@/lib/types/questions";
 import { useMutation } from "@tanstack/react-query";
 
 export default function useSubmitAnswer() {
@@ -13,7 +13,7 @@ export default function useSubmitAnswer() {
     mutate: submitAnswer,
     isPending,
   } = useMutation({
-    mutationFn: async (submittedAnswers: SubmittedAnswersType) => {
+    mutationFn: async (submittedAnswers: SubmittedAnswers) => {
       const response = await submitAnswersService(submittedAnswers);
       if ("code" in response) {
         throw new Error(response.message);

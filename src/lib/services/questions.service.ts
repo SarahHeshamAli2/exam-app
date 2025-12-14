@@ -1,8 +1,8 @@
 import { API_BASE_URL } from "../constants/base-url.constant";
 import {
-  ExamResultsResponse,
+  ExamResults,
   GetQuestionsOnExamResponse,
-  SubmittedAnswer,
+  SubmittedAnswers,
 } from "../types/questions";
 import getToken from "../utils/manage-token";
 
@@ -22,8 +22,8 @@ export async function getQuestionsOnExamService(
 }
 
 export async function submitAnswersService(
-  submittedAnswers: SubmittedAnswer
-): Promise<ExamResultsResponse> {
+  submittedAnswers: SubmittedAnswers
+): Promise<ApiResponse<ExamResults>> {
   const token = await getToken();
 
   const response = await fetch(`${API_BASE_URL}/questions/check`, {

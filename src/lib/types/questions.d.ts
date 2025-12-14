@@ -57,5 +57,3 @@ export type CheckedAnswersProps = {
 export type GetQuestionsOnExamResponse = {
   questions: Question[];
 };
-
-export type ExamResultsResponse = ExamResults;
